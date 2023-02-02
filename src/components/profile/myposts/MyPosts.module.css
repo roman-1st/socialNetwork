@@ -1,8 +1,16 @@
 .item {
-  color: greenyellow;
+  color: rgb(127, 198, 21);
 }
 
 .item img {
   width: 50px;
   border-radius: 20px;
+}
+
+.postsBlock {
+  padding: 10px;
+}
+
+.posts {
+  margin-top: 10px;
 }

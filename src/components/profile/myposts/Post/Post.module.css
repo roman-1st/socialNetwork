@@ -1,8 +1,9 @@
 .item {
-  color: greenyellow;
+  color: rgb(75, 77, 71);
 }
 
 .item img {
   width: 50px;
   border-radius: 30px;
+
 }

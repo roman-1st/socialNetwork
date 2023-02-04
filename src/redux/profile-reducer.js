@@ -1,7 +1,21 @@
 const ADD_POST = "ADD-POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 
-const profileReducer = (state, action) => {
+let initialState =  {
+    posts: [
+        { id: 1, message: 'Hi!', likesCount: 12, },
+        { id: 2, message: 'How are you Bro?)', likesCount: 22, },
+        { id: 3, message: "It's my first post", likesCount: 9, },
+        { id: 4, message: "It's my second post", likesCount: 40, },
+        { id: 5, message: "It's my thirsd post", likesCount: 2, },
+        { id: 6, message: "I love JS", likesCount: 34, },
+        { id: 7, message: "Dima vedet sebyz kak baba", likesCount: 77, },
+    ],
+    newPostText: '',
+}
+
+const profileReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -23,7 +37,7 @@ const profileReducer = (state, action) => {
 
 
         default:
-            console.log('Неправильно указан type of dispatch')
+            
             return state;
     }
 }

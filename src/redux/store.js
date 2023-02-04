@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import dialogsReducer from "./dialogs-reducer"
 import profileReducer from "./profile-reducer"
 import sidebarReducer from "./sidebar-reducer"
@@ -45,24 +44,6 @@ let store = {
                 { name: 'Anna', age: 30, },
             ]
         }
-=======
-let rerenderEntireThree = () => {
-    console.log('state was changed');
-}
-
-let state = {
-    profilePage: {
-        posts: [
-            { id: 1, message: 'Hi!', likesCount: 12, },
-            { id: 2, message: 'How are you Bro?)', likesCount: 22, },
-            { id: 3, message: "It's my first post", likesCount: 9, },
-            { id: 4, message: "It's my second post", likesCount: 40, },
-            { id: 5, message: "It's my thirsd post", likesCount: 2, },
-            { id: 6, message: "I love JS", likesCount: 34, },
-            { id: 7, message: "Dima vedet sebyz kak baba", likesCount: 77, },
-        ],
-        newPostText: 'itkamasutra',
->>>>>>> Stashed changes
     },
     _callSubscriber() {
         console.log('State was changed');
@@ -86,7 +67,8 @@ let state = {
         this._state.dialogsPage = dialogsReducer( this._state.dialogsPage, action )
         this._state.sidebar = sidebarReducer ( this._state.sidebar, action)
 
-<<<<<<< Updated upstream
+        // debugger
+
         this._callSubscriber()
         // if (action.type === ADD_POST) {
         //     let newPost = {
@@ -95,21 +77,11 @@ let state = {
         //         likesCount: 0,
         //     }
         //     this._state.profilePage.newPostText = ''
-=======
-export const addPost = () => {
-    let newPost = {
-        id: 8,
-        message: state.profilePage.newPostText,
-        likesCount: 0,
-    }
-    state.profilePage.newPostText = ''
->>>>>>> Stashed changes
     
         //     this._state.profilePage.posts.push(newPost)
         //     this._state._callSubscriber(this._state)
         //     console.log(this._state.profilePage.posts);
 
-<<<<<<< Updated upstream
         // } else if (action.type === UPDATE_NEW_POST_TEXT) {
         //     this._state.profilePage.newPostText = action.newText
         //     this._state._callSubscriber()
@@ -134,15 +106,6 @@ export const addPost = () => {
 
         // else console.log('Неправильно указан type of dispatch')
     }, 
-=======
-export const updateNewPostText = (newText) => {
-    state.profilePage.newPostText = newText 
-    rerenderEntireThree(state)
-};
-
-export const subscribe = ( observer ) => {
-    rerenderEntireThree = observer
->>>>>>> Stashed changes
 }
 
 window.store = store

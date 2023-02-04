@@ -1,7 +1,7 @@
-const ADD_POST = "ADD-POST"
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
-const ADD_MESSAGE_ELEMENT = "ADD-MESSAGE-ELEMENT"
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
+<<<<<<< Updated upstream
+import dialogsReducer from "./dialogs-reducer"
+import profileReducer from "./profile-reducer"
+import sidebarReducer from "./sidebar-reducer"
 
 let store = {
     _state: {
@@ -33,7 +33,7 @@ let store = {
                 { id: 4, message: 'I am fine!', },
                 { id: 5, message: 'I am not fine!', },
             ],
-            newMessageText: '',
+            newMessageBody: '',
         },
         sidebar: {
             friends: [
@@ -45,6 +45,24 @@ let store = {
                 { name: 'Anna', age: 30, },
             ]
         }
+=======
+let rerenderEntireThree = () => {
+    console.log('state was changed');
+}
+
+let state = {
+    profilePage: {
+        posts: [
+            { id: 1, message: 'Hi!', likesCount: 12, },
+            { id: 2, message: 'How are you Bro?)', likesCount: 22, },
+            { id: 3, message: "It's my first post", likesCount: 9, },
+            { id: 4, message: "It's my second post", likesCount: 40, },
+            { id: 5, message: "It's my thirsd post", likesCount: 2, },
+            { id: 6, message: "I love JS", likesCount: 34, },
+            { id: 7, message: "Dima vedet sebyz kak baba", likesCount: 77, },
+        ],
+        newPostText: 'itkamasutra',
+>>>>>>> Stashed changes
     },
     _callSubscriber() {
         console.log('State was changed');
@@ -54,59 +72,78 @@ let store = {
         return this._state
     },
     subscribe(observer) {
-        this._state._callSubscriber = observer
+        this._callSubscriber = observer
     },
 
     dispatch( action ){ // type: "String"
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: this._state.profilePage.posts.at(-1).id + 1,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            }
-            this._state.profilePage.newPostText = ''
+        // debugger
+
+        // profileReducer( this._state.profilePage, action )
+        // dialogsReducer( this._state.dialogsPage, action )
+        // sidebarReducer()
+
+        this._state.profilePage = profileReducer( this._state.profilePage, action )
+        this._state.dialogsPage = dialogsReducer( this._state.dialogsPage, action )
+        this._state.sidebar = sidebarReducer ( this._state.sidebar, action)
+
+<<<<<<< Updated upstream
+        this._callSubscriber()
+        // if (action.type === ADD_POST) {
+        //     let newPost = {
+        //         id: this._state.profilePage.posts.at(-1).id + 1,
+        //         message: this._state.profilePage.newPostText,
+        //         likesCount: 0,
+        //     }
+        //     this._state.profilePage.newPostText = ''
+=======
+export const addPost = () => {
+    let newPost = {
+        id: 8,
+        message: state.profilePage.newPostText,
+        likesCount: 0,
+    }
+    state.profilePage.newPostText = ''
+>>>>>>> Stashed changes
     
-            this._state.profilePage.posts.push(newPost)
-            this._state._callSubscriber(this._state)
-            console.log(this._state.profilePage.posts);
+        //     this._state.profilePage.posts.push(newPost)
+        //     this._state._callSubscriber(this._state)
+        //     console.log(this._state.profilePage.posts);
 
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this._state._callSubscriber()
+<<<<<<< Updated upstream
+        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
+        //     this._state.profilePage.newPostText = action.newText
+        //     this._state._callSubscriber()
+        //     // console.log(this._state.profilePage.newPostText);
 
-        }  else if (action.type === ADD_MESSAGE_ELEMENT) {
-            let newMessage = {
-                id: this._state.dialogsPage.messages.at(-1).id + 1,
-                message: this._state.dialogsPage.newMessageText
-            }
+        // }  else if (action.type === SEND_MESSAGE) {
+        //     let newMessage = {
+        //         id: this._state.dialogsPage.messages.at(-1).id + 1,
+        //         message: this._state.dialogsPage.newMessageBody
+        //     }
 
-            this._state.dialogsPage.newMessageText = ''
+        //     this._state.dialogsPage.newMessageBody = ''
 
-            this._state.dialogsPage.messages.push(newMessage)
-            this._state._callSubscriber(this._state)
-            console.log(this._state.dialogsPage.messages);
+        //     this._state.dialogsPage.messages.push(newMessage)
+        //     this._state._callSubscriber(this._state)
+        //     console.log(this._state.dialogsPage.messages);
 
 
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newText
-            this._state._callSubscriber()}
+        // } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+        //     this._state.dialogsPage.newMessageBody = action.body
+        //     this._state._callSubscriber()}
 
-        else console.log('Неправильно указан type of dispatch')
+        // else console.log('Неправильно указан type of dispatch')
     }, 
-}
+=======
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText 
+    rerenderEntireThree(state)
+};
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updateNewPostTextActionCreator = (text) => ({ 
-    type: UPDATE_NEW_POST_TEXT, 
-    newText: text 
-})
-export const addMessageActionCreator = () => ({
-    type: ADD_MESSAGE_ELEMENT,
-})
-export const updateNewMessageText = (text) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newText: text,
-})
+export const subscribe = ( observer ) => {
+    rerenderEntireThree = observer
+>>>>>>> Stashed changes
+}
 
 window.store = store
 

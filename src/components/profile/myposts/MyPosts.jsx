@@ -5,7 +5,7 @@ import Post from "./Post/Post";
 import {
   updateNewPostTextActionCreator,
   addPostActionCreator 
-  } from "../../../redux/State";
+  } from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
 
@@ -20,7 +20,7 @@ const MyPosts = (props) => {
 
   let onPostChange = () => {
     let text = newPostElement.current.value
-    console.log(text);
+    // console.log(text);
     props.dispatch( updateNewPostTextActionCreator(text) )
   }
 
@@ -33,6 +33,7 @@ const MyPosts = (props) => {
             ref={ newPostElement }
             onChange={ onPostChange }
             value={ props.newPostText }
+            placeholder="Enter you'r post"
           
             />
         </div>
